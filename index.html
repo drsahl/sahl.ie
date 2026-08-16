@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sahl Musa — doctor, GP trainee in Ireland.">
+<title>Sahl Musa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1d1d1f;
+    --muted: #6e6e73;
+    --faint: #a1a1a6;
+    --line: #d2d2d7;
+    --paper: #ffffff;
+    --quiet: #f5f5f7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  html[dir="rtl"] body {
+    font-family: "Noto Naskh Arabic", "Al Nile", "Geeza Pro", serif;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+
+  /* header */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: saturate(180%) blur(16px);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+  header .wrap {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 16px; padding-bottom: 16px;
+  }
+  .mark {
+    font-family: "Noto Naskh Arabic", "Al Nile", "Geeza Pro", serif;
+    font-size: 24px; font-weight: 600; color: var(--ink); text-decoration: none;
+  }
+  .header-side { display: flex; align-items: center; gap: 18px; }
+  .domain { font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+  .lang-select {
+    appearance: none; -webkit-appearance: none;
+    border: 1px solid var(--line); border-radius: 980px;
+    background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' viewBox='0 0 24 24' fill='none' stroke='%236e6e73' stroke-width='2.5' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 12px center;
+    padding: 6px 30px 6px 14px;
+    font-family: inherit; font-size: 13px; color: var(--ink); cursor: pointer;
+  }
+  html[dir="rtl"] .lang-select { background-position: left 12px center; padding: 6px 14px 6px 30px; }
+  .lang-select:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
+
+  /* hero */
+  .hero { position: relative; padding: 128px 0 104px; overflow: hidden; }
+  .hero .watermark {
+    position: absolute;
+    inset-inline-end: -40px;
+    top: 50%; transform: translateY(-50%);
+    font-family: "Noto Naskh Arabic", "Al Nile", "Geeza Pro", serif;
+    font-size: 340px; line-height: 1; font-weight: 500;
+    color: var(--quiet);
+    pointer-events: none; user-select: none;
+    z-index: 0;
+  }
+  .hero .wrap { position: relative; z-index: 1; }
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 84px; font-weight: 300;
+    letter-spacing: -0.025em; line-height: 1.04;
+  }
+  html[dir="rtl"] h1 { font-family: "Noto Naskh Arabic", serif; font-weight: 500; letter-spacing: 0; }
+  .meaning {
+    margin-top: 14px;
+    font-family: "Noto Naskh Arabic", "Al Nile", "Geeza Pro", serif;
+    font-size: 15px; color: var(--faint);
+    direction: rtl; text-align: left;
+    max-width: 420px;
+  }
+  .hero .sub {
+    margin-top: 24px; font-size: 22px; color: var(--muted);
+    max-width: 26ch; line-height: 1.45; font-weight: 400;
+  }
+  html[dir="rtl"] .hero .sub { font-size: 24px; }
+
+  /* index rows */
+  section.block { border-top: 1px solid var(--line); padding: 72px 0; }
+  .num {
+    font-size: 13px; color: var(--faint); font-weight: 500;
+    letter-spacing: 0.1em; margin-bottom: 20px;
+    font-variant-numeric: tabular-nums;
+  }
+  .big {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 34px; font-weight: 300; line-height: 1.3;
+    letter-spacing: -0.01em; max-width: 24ch;
+  }
+  html[dir="rtl"] .big { font-family: "Noto Naskh Arabic", serif; font-weight: 400; font-size: 32px; }
+  .note { margin-top: 18px; font-size: 16px; color: var(--muted); max-width: 52ch; line-height: 1.65; }
+
+  a { color: inherit; }
+  .worklink {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+    text-decoration: none; padding: 26px 0;
+    border-top: 1px solid var(--line);
+  }
+  .worklink .t { font-size: 19px; font-weight: 600; }
+  .worklink .d { font-size: 14px; color: var(--muted); text-align: end; }
+  .worklink:hover .t { text-decoration: underline; text-underline-offset: 4px; }
+
+  .maillink {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 34px; font-weight: 300; letter-spacing: -0.01em;
+    text-decoration: none; border-bottom: 1px solid var(--line);
+    transition: border-color 0.25s;
+  }
+  .maillink:hover { border-color: var(--ink); }
+  html[dir="rtl"] .maillink { font-family: "Inter", sans-serif; font-size: 28px; direction: ltr; display: inline-block; }
+
+  /* CV expander: opens across, then down */
+  .cv-toggle {
+    display: inline-block;
+    font-size: 15px; font-weight: 500;
+    color: var(--ink); text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    cursor: pointer;
+    background: none; border-top: none; border-left: none; border-right: none;
+    font-family: inherit;
+  }
+  .cv-toggle:hover { border-color: var(--ink); }
+  .cv-h {
+    overflow: hidden;
+    max-width: 0;
+    transition: max-width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cv-h.open { max-width: 100%; }
+  .cv-v {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+  }
+  .cv-h.open .cv-v { max-height: 600px; }
+  .cv-panel {
+    margin-top: 28px;
+    border: 1px solid var(--line);
+    padding: 28px 28px 24px;
+    white-space: normal;
+  }
+  .cv-line {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 20px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--quiet);
+  }
+  .cv-line:last-of-type { border-bottom: none; }
+  .cv-line .where { font-size: 15px; font-weight: 600; }
+  .cv-line .what { font-size: 14px; color: var(--muted); flex: 1; }
+  .cv-line .when { font-size: 13px; color: var(--faint); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .cv-close { margin-top: 18px; font-size: 14px; color: var(--muted); }
+  .cv-close a { color: var(--ink); }
+
+  /* footer */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.6);
+    padding: 56px 0; margin-top: 40px;
+  }
+  footer .wrap { display: flex; justify-content: space-between; align-items: baseline; }
+  footer .fmark { font-family: "Noto Naskh Arabic", serif; font-size: 20px; color: #fff; }
+  footer span { font-size: 13px; }
+
+  @media (max-width: 700px) {
+    h1 { font-size: 52px; }
+    .hero { padding: 88px 0 72px; }
+    .hero .watermark { font-size: 200px; inset-inline-end: -30px; }
+    .hero .sub { font-size: 19px; }
+    .big { font-size: 26px; }
+    .maillink { font-size: 24px; }
+    .worklink { flex-direction: column; gap: 6px; }
+    .worklink .d { text-align: start; }
+    .cv-line { flex-wrap: wrap; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="mark" href="/">سهل</a>
+    <div class="header-side">
+      <span class="domain">sahl.ie</span>
+      <select class="lang-select" id="langSelect" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="watermark" aria-hidden="true">سهل</div>
+    <div class="wrap">
+      <h1 data-i18n="name">Sahl Musa.</h1>
+      <p class="meaning" id="meaningNote">سَهْل — الأرض المستوية، والرجل الليّن الكريم</p>
+      <p class="sub" data-i18n="sub">Doctor. Third-year GP trainee in Ireland.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="num" data-i18n="n1">01 — Now</p>
+      <p class="big" data-i18n="now">Prevention. Finding the patients a system is about to fail, early enough that it never has to.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="num" data-i18n="n2">02 — Work</p>
+      <a class="worklink" href="https://education.sahl.ie">
+        <span class="t">The Rights Guide</span>
+        <span class="d" data-i18n="workd">Rights information for people seeking protection in Ireland</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="num" data-i18n="n3">03 — Contact</p>
+      <a class="maillink" href="mailto:me@sahl.ie">me@sahl.ie</a>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="num" data-i18n="n4">04 — CV</p>
+      <button class="cv-toggle" id="cvToggle" aria-expanded="false" data-i18n="cvopen">Open a short synopsis ↓</button>
+      <div class="cv-h" id="cvH">
+        <div class="cv-v">
+          <div class="cv-panel">
+            <div class="cv-line">
+              <span class="where" data-i18n="cv1w">Sudan</span>
+              <span class="what" data-i18n="cv1d">The first years: ambulances, emergency rooms, intensive care.</span>
+              <span class="when">2014–2016</span>
+            </div>
+            <div class="cv-line">
+              <span class="where" data-i18n="cv2w">Saudi Arabia</span>
+              <span class="what" data-i18n="cv2d">Emergency medicine and health-service leadership in the southern region.</span>
+              <span class="when">2016–2022</span>
+            </div>
+            <div class="cv-line">
+              <span class="where" data-i18n="cv3w">Ireland</span>
+              <span class="what" data-i18n="cv3d">Emergency medicine, then hospital medicine. Now general practice.</span>
+              <span class="when" data-i18n="cv3t">2022–present</span>
+            </div>
+            <p class="cv-close"><span data-i18n="cvclose">For anything more detailed:</span> <a href="mailto:me@sahl.ie">me@sahl.ie</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="fmark">سهل</span>
+    <span>sahl.ie · 2026</span>
+  </div>
+</footer>
+
+<script>
+const STR = {
+  en: {
+    name: "Sahl Musa.",
+    sub: "Doctor. Third-year GP trainee in Ireland.",
+    n1: "01 — Now",
+    now: "Prevention. Finding the patients a system is about to fail, early enough that it never has to.",
+    n2: "02 — Work",
+    workd: "Rights information for people seeking protection in Ireland",
+    n3: "03 — Contact",
+    n4: "04 — CV",
+    cvopen: "Open a short synopsis ↓",
+    cvclose: "For anything more detailed:",
+    cv1w: "Sudan", cv1d: "The first years: ambulances, emergency rooms, intensive care.",
+    cv2w: "Saudi Arabia", cv2d: "Emergency medicine and health-service leadership in the southern region.",
+    cv3w: "Ireland", cv3d: "Emergency medicine, then hospital medicine. Now general practice.", cv3t: "2022–present",
+    title: "Sahl Musa"
+  },
+  ar: {
+    name: "سهل موسى.",
+    sub: "طبيب. متدرب سنة ثالثة في الطب العام في أيرلندا.",
+    n1: "٠١ — الآن",
+    now: "الوقاية. أن نجد المرضى الذين أوشك النظام أن يخذلهم، مبكراً بما يكفي كي لا يضطر إلى ذلك أبداً.",
+    n2: "٠٢ — الأعمال",
+    workd: "معلومات واضحة عن الحقوق للأشخاص طالبي الحماية في أيرلندا",
+    n3: "٠٣ — التواصل",
+    n4: "٠٤ — السيرة",
+    cvopen: "افتح موجزاً قصيراً ↓",
+    cvclose: "لأي تفاصيل إضافية:",
+    cv1w: "السودان", cv1d: "السنوات الأولى: الإسعاف وغرف الطوارئ والعناية المركزة.",
+    cv2w: "السعودية", cv2d: "طب الطوارئ وقيادة الخدمات الصحية في المنطقة الجنوبية.",
+    cv3w: "أيرلندا", cv3d: "طب الطوارئ ثم طب المستشفيات. والآن الطب العام.", cv3t: "2022–حتى اليوم",
+    title: "سهل موسى"
+  }
+};
+
+const meaningNote = document.getElementById("meaningNote");
+
+function setLang(lang) {
+  const dict = STR[lang] || STR.en;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const k = el.getAttribute("data-i18n");
+    if (dict[k] !== undefined) el.textContent = dict[k];
+  });
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  document.title = dict.title;
+  // the name-meaning note shows only over the Latin name
+  meaningNote.style.display = lang === "ar" ? "none" : "";
+  localStorage.setItem("sahl-apex-lang", lang);
+  document.getElementById("langSelect").value = lang;
+}
+
+const fromUrl = new URLSearchParams(location.search).get("lang");
+const saved = localStorage.getItem("sahl-apex-lang");
+setLang(fromUrl || saved || "en");
+
+document.getElementById("langSelect").addEventListener("change", e => setLang(e.target.value));
+
+const cvToggle = document.getElementById("cvToggle");
+const cvH = document.getElementById("cvH");
+cvToggle.addEventListener("click", () => {
+  const open = cvH.classList.toggle("open");
+  cvToggle.setAttribute("aria-expanded", open ? "true" : "false");
+});
+</script>
+
+</body>
+</html>

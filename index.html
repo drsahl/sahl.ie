@@ -7,6 +7,7 @@
 <meta name="theme-color" content="#EFEBCE">
 <title>sahl musa</title>
 <link rel="icon" type="image/png" href="crest-icon.png">
+<link rel="apple-touch-icon" href="crest-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
@@ -83,7 +84,7 @@
   .col { max-width: 660px; }
 
   /* hero — the name arrives, then stays */
-  .hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; }
+  .hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; position: relative; }
   h1 {
     font-family: var(--serif); font-weight: 400;
     font-size: clamp(3.2rem, 8.4vw, 7.2rem);
@@ -92,22 +93,38 @@
   }
   .meaning { margin-top: 1.5rem; max-width: 46ch; }
   .meaning .pron {
-    display: block; margin-bottom: .6rem;
+    display: block;
     font-family: var(--sans); font-size: .72rem; letter-spacing: .14em;
     color: var(--forest-40);
   }
-  .meaning .gloss {
-    display: block;
-    font-family: var(--serif); font-style: italic; font-size: 1.06rem; line-height: 1.75;
-    color: var(--forest-70);
+  .motto {
+    margin-top: 2.8rem; max-width: 34ch;
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(1.3rem, 2.3vw, 1.75rem); line-height: 1.45;
+    color: var(--forest-90);
   }
-  .meaning .mispron {
-    display: block; margin-top: .8rem;
-    font-size: .74rem; letter-spacing: .02em; color: var(--forest-40);
+  .motto-note {
+    margin-top: 1rem; max-width: 34ch;
+    font-size: .72rem; letter-spacing: .04em; line-height: 1.7;
+    color: var(--forest-40);
   }
-  .hero .sub {
-    margin-top: 2.2rem; max-width: 30ch;
-    font-size: 1.05rem; line-height: 1.8; color: var(--forest-70);
+
+  /* praxis — the scroll cue; type only, edges melt into the ground */
+  .praxis {
+    position: absolute; bottom: 2.2rem; left: 50%;
+    display: inline-flex; flex-direction: column; align-items: center; gap: .45rem;
+    text-decoration: none; cursor: pointer;
+    font-family: var(--sans); font-size: .68rem; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--forest-40);
+    text-shadow: 0 0 22px rgba(239,235,206,.95), 0 0 44px rgba(239,235,206,.65);
+    animation: floaty 3.4s ease-in-out infinite;
+    transition: color .4s var(--ease);
+  }
+  .praxis .down { font-family: var(--serif); font-size: 1.05rem; letter-spacing: 0; text-transform: none; }
+  .praxis:hover { color: var(--forest); }
+  @keyframes floaty {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-7px); }
   }
 
   /* sections — no rules, no boxes; space and type carry the rhythm */
@@ -125,6 +142,7 @@
     line-height: 1.32; letter-spacing: -.005em;
     color: var(--forest-90); max-width: 26ch;
   }
+  .big.long { max-width: 38ch; }
 
   /* the single work link — a sentence you can walk through, not a card */
   .worklink { display: block; text-decoration: none; color: inherit; }
@@ -208,6 +226,7 @@
   @media (prefers-reduced-motion: reduce) {
     .r { transition: none; opacity: 1; transform: none; }
     .ghost { animation: none; }
+    .praxis { animation: none; }
     html { scroll-behavior: auto; }
     .cv-h, .cv-v { transition: none; }
   }
@@ -231,17 +250,17 @@
       <h1 class="r">sahl musa.</h1>
       <p class="meaning r" data-d="1">
         <span class="pron">sahl · /sah-hl/ · arabic: easy; also level, open land.</span>
-        <span class="gloss">ground you can cross without climbing. a person you can approach without ceremony.</span>
-        <span class="mispron">he answers to most versions of it.</span>
       </p>
-      <p class="sub r" data-d="2">doctor. in his third year of GP training in Ireland.</p>
+      <p class="motto r" data-d="2">Bellum omnium contra omnes imminet.</p>
+      <p class="motto-note r" data-d="3">literally invented two minutes ago, by a still very, very small me.</p>
     </div></div>
+    <a class="praxis r" data-d="3" href="#conviction" id="praxis"><span>praxis</span><span class="down">↓</span></a>
   </section>
 
-  <section class="flow">
+  <section class="flow" id="conviction">
     <div class="wrap"><div class="col">
       <p class="num r"><em>01</em><span>conviction</span></p>
-      <p class="big r" data-d="1">prevention. a system fails a patient slowly, and never without warning. seeing it early is a craft.</p>
+      <p class="big long r" data-d="1">To govern effectively is to carry the burden of the unseen; it requires the rare intellectual grit to compel a system into a state of present sacrifice to preempt an otherwise inevitable downfall down the line.</p>
     </div></div>
   </section>
 
@@ -294,7 +313,6 @@
 
 <footer>
   <div class="wrap">
-    <span class="sig">سهل</span>
     <span class="fine">sahl.ie · 2026</span>
   </div>
 </footer>
@@ -370,6 +388,30 @@ if (qaMode) {
     cvToggle.setAttribute("aria-expanded", "true");
   }
 }
+
+/* praxis — a slow, deliberate scroll into the next section */
+const praxis = document.getElementById("praxis");
+praxis.addEventListener("click", e => {
+  e.preventDefault();
+  const target = document.getElementById("conviction");
+  if (!target) return;
+  const start = window.scrollY;
+  const end = target.getBoundingClientRect().top + start - 24;
+  if (reduced) { window.scrollTo(0, end); return; }
+  const root = document.documentElement;
+  const prevBehavior = root.style.scrollBehavior;
+  root.style.scrollBehavior = "auto";
+  const dur = 1150;
+  const t0 = performance.now();
+  function step(t) {
+    const p = Math.min(1, (t - t0) / dur);
+    const ease = p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+    window.scrollTo(0, start + (end - start) * ease);
+    if (p < 1) requestAnimationFrame(step);
+    else root.style.scrollBehavior = prevBehavior;
+  }
+  requestAnimationFrame(step);
+});
 
 /* the ghost drifts slowly against the scroll, so the page moves as one body */
 const ghost = document.getElementById("ghost");
